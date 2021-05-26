@@ -1,15 +1,18 @@
 import java.util.LinkedList;
 
 public class App {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
-        String caminhoArquivoEntrada =System.getProperty("user.dir") + "\\CalculadoraPrimitiva\\input\\programa.txt";
+        String caminhoArquivoEntrada = System.getProperty("user.dir") + "\\CalculadoraPrimitiva\\input\\programa.txt";
         ArquivoPrograma arquivoPrograma = new ArquivoPrograma();
         Calculadora calculadora = new Calculadora();
 
-        String textoArquivo = arquivoPrograma.ler(caminhoArquivoEntrada);
-        LinkedList<LinkedList<String>> tokens = calculadora.getTokens(textoArquivo);
-
-        System.out.println(tokens);
+        try {
+            String textoArquivo = arquivoPrograma.ler(caminhoArquivoEntrada);
+            LinkedList<LinkedList<Token>> comandos = calculadora.getComandos(textoArquivo);
+            calculadora.imprimirResultado(comandos);
+        } catch (Exception e) {
+            System.out.println(e.getStackTrace());
+        }
     }
 }
