@@ -1,19 +1,18 @@
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Stack;
 
 public class Calculadora {
 
     private HashMap<String, Integer> _variaveis = new HashMap<>();
 
-    public void imprimirResultado(LinkedList<LinkedList<Token>> comandos) throws Exception {
+    public void imprimirResultado(LinkedList<Comando> comandos) throws Exception {
 
-        for (LinkedList<Token> comando : comandos) {
+        for (Comando comando : comandos) {
 
-            if (ehComandoDeAtribuicao(comando)) {
-                int valorVariavel = calcularExpressao(comando.subList(2, comando.size()));
-                _variaveis.put(comando.getFirst().getValor(), valorVariavel);
+            if (comando.ehAtribuicao()) {
+                int valorVariavel = calcularExpressao(comando.getExpressao());
+                _variaveis.put(comando.getTokenAtribuicao().getValor(), valorVariavel);
                 continue;
             }
 
@@ -23,23 +22,19 @@ public class Calculadora {
 
     }
 
-    private boolean ehComandoDeAtribuicao(LinkedList<Token> comando) {
-        return comando.getFirst().ehVariavel() && comando.size() > 2 && comando.get(1).ehSinalDeIgual();
-    }
+    private int calcularExpressao(Comando expressao) throws Exception {
 
-    private int calcularExpressao(List<Token> expressao) throws Exception {
-
-        Token tokenAtual, proximoTokenNumerico, primeiroTokenNumerico = expressao.get(0);
+        Token tokenAtual, proximoTokenNumerico, primeiroTokenNumerico = expressao.getTokenAtribuicao();
         int resultadoParcial = primeiroTokenNumerico.ehConstante()
             ? primeiroTokenNumerico.getValorInt()
             : _variaveis.get(primeiroTokenNumerico.getValor());
         int valorProximoTokenNumerico;
         Stack<Integer> pilhaSoma = new Stack<>();
 
-        int tamanhoExpressao = expressao.size();
+        int tamanhoExpressao = expressao.getSize();
         for (int i = 1; i < tamanhoExpressao - 1; i += 2) { // iteração sobre os operadores
-            tokenAtual = expressao.get(i);
-            proximoTokenNumerico = expressao.get(i + 1);
+            tokenAtual = expressao.getToken(i);
+            proximoTokenNumerico = expressao.getToken(i + 1);
 
             valorProximoTokenNumerico = proximoTokenNumerico.ehConstante()
                 ? proximoTokenNumerico.getValorInt()
@@ -52,12 +47,12 @@ public class Calculadora {
 
             if (tokenAtual.ehOperadorSoma()) {
 
-                if (!existeProximaExpressao(expressao, i)) {
+                if (!expressao.contemOperacaoAposIndice(i)) {
                     resultadoParcial += valorProximoTokenNumerico;
                     continue;
                 }
 
-                Token proximoOperador = expressao.get(i + 2);
+                Token proximoOperador = expressao.getToken(i + 2);
                 if (proximoOperador.ehOperadorSoma()) {
                     resultadoParcial += valorProximoTokenNumerico;
                     continue;
@@ -85,18 +80,14 @@ public class Calculadora {
         return resultadoParcial;
     }
 
-    private boolean existeProximaExpressao(List<Token> expressao, int indiceOperadorAtual) {
-        return indiceOperadorAtual < expressao.size() - 2;
-    }
-
-    public LinkedList<LinkedList<Token>> getComandos(String arquivo) throws Exception {
+    public LinkedList<Comando> getComandos(String arquivo) throws Exception {
 
         int tamanhoArquivo = arquivo.length();
         if (tamanhoArquivo == 0)
             throw new Exception("Arquivo vazio.");
 
         LinkedList<Token> tokensComando = new LinkedList<>();
-        LinkedList<LinkedList<Token>> comandos = new LinkedList<>();
+        LinkedList<Comando> comandos = new LinkedList<>();
 
         char charAtual;
         StringBuilder tokenBuilder = new StringBuilder();
@@ -132,7 +123,7 @@ public class Calculadora {
                     tokenBuilder.setLength(0);
                 }
 
-                comandos.add(tokensComando);
+                comandos.add(new Comando(tokensComando));
                 tokensComando = new LinkedList<>();
 
                 tipoUltimoCaractere = tipoCaractereAtual;

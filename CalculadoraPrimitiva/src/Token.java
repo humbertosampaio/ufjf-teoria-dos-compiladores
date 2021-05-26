@@ -21,10 +21,6 @@ public class Token {
             throw new Exception("Token inválido: " + valor);
     }
 
-    public TipoToken getTipoToken() {
-        return _tipoToken;
-    }
-
     public boolean ehVariavel() {
         return _tipoToken == TipoToken.Variavel;
     }

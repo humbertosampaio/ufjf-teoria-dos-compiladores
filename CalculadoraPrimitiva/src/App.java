@@ -9,7 +9,7 @@ public class App {
 
         try {
             String textoArquivo = arquivoPrograma.ler(caminhoArquivoEntrada);
-            LinkedList<LinkedList<Token>> comandos = calculadora.getComandos(textoArquivo);
+            LinkedList<Comando> comandos = calculadora.getComandos(textoArquivo);
             calculadora.imprimirResultado(comandos);
         } catch (Exception e) {
             System.out.println(e.getStackTrace());
