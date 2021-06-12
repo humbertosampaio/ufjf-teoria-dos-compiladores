@@ -2,29 +2,29 @@ package estados;
 
 import tokens.TipoToken;
 
-public class AbreChave implements Estado {
+public class ComentarioMultiplasLinhas implements Estado {
 
     @Override
     public boolean ehFinal() {
-        return true;
+        return false;
     }
 
     @Override
     public TipoToken getTipoToken() {
-        return TipoToken.AbreChave;
+        return null;
     }
 
     @Override
     public boolean deveSerPulado() {
-        return false;
+        return true;
     }
 
     @Override
     public Estado proximoEstado(char c) {
         if (c == '-')
-            return Estados.ComentarioMultiplasLinhas;
+            return Estados.FechaComentarioMultiplasLinhasHifen;
 
-        return null;
+        return Estados.ComentarioMultiplasLinhas;
     }
 
 }

@@ -21,6 +21,9 @@ public class Subtracao implements Estado {
 
     @Override
     public Estado proximoEstado(char c) {
+        if (c == '-')
+            return Estados.ComentarioUmaLinha;
+
         return null;
     }
 

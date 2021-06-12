@@ -1,10 +1,16 @@
-         main() {
+main() { -- Comentário 1
     print fat(10)[0];
 }
 
+{-
+Comentário 2
+ -}
+
 fat(num :: Int) : Int {
     if (num < 1)
-        return 1;
+        return {-
+Comentário 3
+ -}1;
     else
         return num * fat(num - 1)[0];
 }

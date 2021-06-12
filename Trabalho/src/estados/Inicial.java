@@ -49,7 +49,7 @@ public class Inicial implements Estado {
         if (Character.isDigit(c)) return Estados.Inteiro;
         if (Character.isUpperCase(c)) return Estados.Tipo;
         if (Character.isLowerCase(c)) return Estados.Identificador;
-        if (Character.isWhitespace(c)) return Estados.Skip;
+        if (Character.isWhitespace(c)) return Estados.WhiteSpace;
 
         return null;
     }

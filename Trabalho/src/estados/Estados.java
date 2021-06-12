@@ -40,6 +40,10 @@ public final class Estados {
     public static Estado CaractereUmaAspaSimples = new CaractereUmaAspaSimples();
 
     // Estados a serem pulados
-    public static Estado Skip = new Skip();
+    public static Estado WhiteSpace = new WhiteSpace();
+    public static Estado ComentarioUmaLinha = new ComentarioUmaLinha();
+    public static Estado ComentarioMultiplasLinhas = new ComentarioMultiplasLinhas();
+    public static Estado FechaComentarioMultiplasLinhasHifen = new FechaComentarioMultiplasLinhasHifen();
+    public static Estado FechaComentarioMultiplasLinhasChave = new FechaComentarioMultiplasLinhasChave();
 
 }

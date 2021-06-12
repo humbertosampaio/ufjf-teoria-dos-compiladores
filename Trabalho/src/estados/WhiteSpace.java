@@ -2,7 +2,7 @@ package estados;
 
 import tokens.TipoToken;
 
-public class AbreChave implements Estado {
+public class WhiteSpace implements Estado {
 
     @Override
     public boolean ehFinal() {
@@ -11,19 +11,16 @@ public class AbreChave implements Estado {
 
     @Override
     public TipoToken getTipoToken() {
-        return TipoToken.AbreChave;
+        return null;
     }
 
     @Override
     public boolean deveSerPulado() {
-        return false;
+        return true;
     }
 
     @Override
     public Estado proximoEstado(char c) {
-        if (c == '-')
-            return Estados.ComentarioMultiplasLinhas;
-
         return null;
     }
 
