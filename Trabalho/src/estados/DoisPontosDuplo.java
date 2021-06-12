@@ -1,0 +1,27 @@
+package estados;
+
+import tokens.TipoToken;
+
+public class DoisPontosDuplo implements Estado {
+
+    @Override
+    public boolean ehFinal() {
+        return true;
+    }
+
+    @Override
+    public boolean deveSerPulado() {
+        return false;
+    }
+
+    @Override
+    public TipoToken getTipoToken() {
+        return TipoToken.DoisPontosDuplos;
+    }
+
+    @Override
+    public Estado proximoEstado(char c) {
+        return null;
+    }
+
+}
