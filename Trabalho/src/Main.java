@@ -1,6 +1,10 @@
 import tokens.TipoToken;
 import tokens.Token;
 
+/**
+ * @author Humberto Sampaio
+ * @author Luís Henrique Simplício
+ */
 public class Main {
 
     public static void main(String[] args) throws Exception {

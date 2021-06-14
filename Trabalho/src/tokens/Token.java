@@ -1,5 +1,9 @@
 package tokens;
 
+/**
+ * @author Humberto Sampaio
+ * @author Luís Henrique Simplício
+ */
 public class Token {
 
     protected final String _lexema;

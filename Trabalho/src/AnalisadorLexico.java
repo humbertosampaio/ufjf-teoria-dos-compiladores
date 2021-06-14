@@ -5,6 +5,10 @@ import estados.*;
 import tokens.*;
 import util.*;
 
+/**
+ * @author Humberto Sampaio
+ * @author Luís Henrique Simplício
+ */
 public class AnalisadorLexico {
 
     private final LeitorCodigoFonte _leitorCodigoFonte;

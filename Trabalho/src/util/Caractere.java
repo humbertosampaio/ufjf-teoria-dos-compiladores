@@ -1,5 +1,9 @@
 package util;
 
+/**
+ * @author Humberto Sampaio
+ * @author Luís Henrique Simplício
+ */
 public class Caractere {
 
     public final char conteudo;

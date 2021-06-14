@@ -2,6 +2,10 @@ package estados;
 
 import tokens.TipoToken;
 
+/**
+ * @author Humberto Sampaio
+ * @author Luís Henrique Simplício
+ */
 public class Subtracao implements Estado {
 
     @Override

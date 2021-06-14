@@ -1,5 +1,9 @@
 package util;
 
+/**
+ * @author Humberto Sampaio
+ * @author Luís Henrique Simplício
+ */
 public class Posicao {
 
     private int _linha, _coluna;

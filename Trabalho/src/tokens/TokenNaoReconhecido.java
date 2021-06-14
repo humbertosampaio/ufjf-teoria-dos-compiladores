@@ -2,6 +2,10 @@ package tokens;
 
 import util.Posicao;
 
+/**
+ * @author Humberto Sampaio
+ * @author Luís Henrique Simplício
+ */
 public class TokenNaoReconhecido extends Token {
 
     private Posicao _posicao;

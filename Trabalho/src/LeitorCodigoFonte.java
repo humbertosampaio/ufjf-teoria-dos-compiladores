@@ -3,6 +3,10 @@ import java.util.*;
 
 import util.*;
 
+/**
+ * @author Humberto Sampaio
+ * @author Luís Henrique Simplício
+ */
 public class LeitorCodigoFonte {
 
     /**
