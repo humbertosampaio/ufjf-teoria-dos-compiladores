@@ -2,11 +2,11 @@ package estados;
 
 import tokens.TipoToken;
 
-public class Ponto implements Estado {
+public class PontoAcessoPropriedadeInterna implements Estado {
 
     @Override
     public boolean ehFinal() {
-        return true;
+        return false;
     }
 
     @Override
@@ -16,16 +16,17 @@ public class Ponto implements Estado {
 
     @Override
     public TipoToken getTipoToken() {
-        return TipoToken.Ponto;
+        return TipoToken.PontoAcessoPropriedadeInterna;
     }
 
     @Override
     public Estado proximoEstado(char c) {
-        if (c >= '0' && c <= '9') {
-            return Estados.PontoFlutuante;
+        if (c >= 'a' && c <= 'z') {
+            return Estados.Identificador;
         }
 
         return null;
     }
+
 
 }

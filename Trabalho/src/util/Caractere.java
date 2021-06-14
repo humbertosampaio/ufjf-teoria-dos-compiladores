@@ -1,3 +1,5 @@
+package util;
+
 public class Caractere {
 
     public final char conteudo;

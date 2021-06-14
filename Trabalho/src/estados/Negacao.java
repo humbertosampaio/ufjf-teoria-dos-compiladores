@@ -22,7 +22,7 @@ public class Negacao implements Estado {
     @Override
     public Estado proximoEstado(char c) {
         if (c == '=') {
-            return Estados.Negacao;
+            return Estados.Diferenca;
         }
 
         return null;

@@ -1,22 +1,49 @@
-main() { -- Comentário 1
-    print fat(10)[0];
-}
+main() { -- COMENTÁRIO DE UMA LINHA
 
-{-
-Comentário 2
- -}
+    var_a = 'a';
+    var_b = 'B';
+    var_n = '\n';
+    var_r = '\r';
+    var_invalido = '\g';
+
+    print fat(10)[0];
+
+    read variavel;
+    print variavel * div(10.5, .6)[0];
+
+    if (x == y && x != z) {
+        print !x;
+    }
+
+    iterate (variavel) {
+        divmod (-5.58, -1) <q , r >;
+    }
+}
 
 fat(num :: Int) : Int {
     if (num < 1)
-        return {-
-Comentário 3
- -}1;
+        return {- COMENTÁRIO
+
+        DE
+
+        VÁRIAS
+
+        LINHAS
+
+    -}
+
+
+    1;
     else
         return num * fat(num - 1)[0];
 }
 
-divmod (num :: Int, div :: Int) {
+divmod (num :: Int, div :: Int) : Int, Int {
     q = num / div;
     r = num % div;
     return q, r;
+}
+
+div (num :: Float, div :: Float) : Float {
+    return num / div;
 }

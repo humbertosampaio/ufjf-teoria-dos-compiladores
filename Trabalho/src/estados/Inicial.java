@@ -32,7 +32,7 @@ public class Inicial implements Estado {
             case '>': return Estados.MaiorQue;
             case ':': return Estados.DoisPontos;
             case ';': return Estados.PontoVirgula;
-            case '.': return Estados.Ponto;
+            case '.': return Estados.PontoFlutuante;
             case ',': return Estados.Virgula;
             case '=': return Estados.Atribuicao;
             case '!': return Estados.Negacao;
@@ -46,7 +46,7 @@ public class Inicial implements Estado {
             case '\\': return Estados.ContraBarra;
         }
 
-        if (Character.isDigit(c)) return Estados.Inteiro;
+        if (Character.isDigit(c)) return Estados.NumeroInteiro;
         if (Character.isUpperCase(c)) return Estados.Tipo;
         if (Character.isLowerCase(c)) return Estados.Identificador;
         if (Character.isWhitespace(c)) return Estados.WhiteSpace;

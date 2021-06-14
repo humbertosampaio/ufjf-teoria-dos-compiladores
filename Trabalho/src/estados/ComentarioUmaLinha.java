@@ -21,7 +21,7 @@ public class ComentarioUmaLinha implements Estado {
 
     @Override
     public Estado proximoEstado(char c) {
-        if (c == '\n')
+        if (c == '\n' || c == '\0')
             return null;
 
         return Estados.ComentarioUmaLinha;

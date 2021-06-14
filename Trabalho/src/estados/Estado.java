@@ -6,9 +6,9 @@ public interface Estado {
 
     boolean ehFinal();
 
-    TipoToken getTipoToken();
-
     boolean deveSerPulado();
+
+    TipoToken getTipoToken();
 
     Estado proximoEstado(char c);
 

@@ -22,7 +22,7 @@ public class ContraBarra implements Estado {
     @Override
     public Estado proximoEstado(char c) {
         if (c == '\'' || c == '\\' || c == 'r' || c == 'b' || c == 't' || c == 'n') {
-            return Estados.Caractere;
+            return Estados.CaractereUmaAspaSimples;
         }
 
         return null;

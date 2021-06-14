@@ -20,7 +20,8 @@ public enum TipoToken {
     DoisPontos,
     DoisPontosDuplos,
     PontoVirgula,
-    Ponto,
+    PontoFlutuante,
+    PontoAcessoPropriedadeInterna,
     Virgula,
     Atribuicao,
     Igualdade,
@@ -31,5 +32,7 @@ public enum TipoToken {
     Subtracao,
     Multiplicacao,
     Divisao,
-    Resto
+    Resto,
+    NaoReconhecido,
+    EndOfFile
 }

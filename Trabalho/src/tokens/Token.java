@@ -2,8 +2,8 @@ package tokens;
 
 public class Token {
 
-    private final String _lexema;
-    private final TipoToken _tipo;
+    protected final String _lexema;
+    protected final TipoToken _tipo;
 
     public Token(String lexema, TipoToken tipoToken) {
         _lexema = lexema;
@@ -21,5 +21,9 @@ public class Token {
     @Override
     public String toString() {
         return _lexema;
+    }
+
+    public String toFormattedString(int qtdCaracteres) {
+        return String.format("%-" + qtdCaracteres + "s| %-" + qtdCaracteres + "s", _lexema, _tipo);
     }
 }

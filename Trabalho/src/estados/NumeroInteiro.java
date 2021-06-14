@@ -2,7 +2,7 @@ package estados;
 
 import tokens.TipoToken;
 
-public class Inteiro implements Estado {
+public class NumeroInteiro implements Estado {
 
     @Override
     public boolean ehFinal() {
@@ -22,11 +22,11 @@ public class Inteiro implements Estado {
     @Override
     public Estado proximoEstado(char c) {
         if (c >= '0' && c <= '9') {
-            return Estados.Inteiro;
+            return Estados.NumeroInteiro;
         }
 
         if (c == '.') {
-            return Estados.Ponto;
+            return Estados.PontoFlutuante;
         }
 
         return null;

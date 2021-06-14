@@ -1,10 +1,12 @@
+package util;
+
 public class Posicao {
 
     private int _linha, _coluna;
 
     public Posicao() {
         _linha = 1;
-        _coluna = 1;
+        _coluna = 0;
     }
 
     private Posicao(int linha, int coluna) {
@@ -33,6 +35,6 @@ public class Posicao {
     }
 
     public void redefinirColuna() {
-        _coluna = 1;
+        _coluna = 0;
     }
 }

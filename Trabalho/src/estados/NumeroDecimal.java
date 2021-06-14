@@ -2,7 +2,7 @@ package estados;
 
 import tokens.TipoToken;
 
-public class Subtracao implements Estado {
+public class NumeroDecimal implements Estado {
 
     @Override
     public boolean ehFinal() {
@@ -16,16 +16,14 @@ public class Subtracao implements Estado {
 
     @Override
     public TipoToken getTipoToken() {
-        return TipoToken.Subtracao;
+        return TipoToken.Float;
     }
 
     @Override
     public Estado proximoEstado(char c) {
-        if (c == '-')
-            return Estados.ComentarioUmaLinha;
-
-        if (c >= '0' && c <= '9')
-            return Estados.NumeroInteiro;
+        if (c >= '0' && c <= '9') {
+            return Estados.NumeroDecimal;
+        }
 
         return null;
     }

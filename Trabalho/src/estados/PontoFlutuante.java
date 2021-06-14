@@ -6,7 +6,7 @@ public class PontoFlutuante implements Estado {
 
     @Override
     public boolean ehFinal() {
-        return true;
+        return false;
     }
 
     @Override
@@ -16,13 +16,13 @@ public class PontoFlutuante implements Estado {
 
     @Override
     public TipoToken getTipoToken() {
-        return TipoToken.Float;
+        return TipoToken.PontoFlutuante;
     }
 
     @Override
     public Estado proximoEstado(char c) {
         if (c >= '0' && c <= '9') {
-            return Estados.PontoFlutuante;
+            return Estados.NumeroDecimal;
         }
 
         return null;

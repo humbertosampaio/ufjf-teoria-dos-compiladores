@@ -6,6 +6,11 @@ public class WhiteSpace implements Estado {
 
     @Override
     public boolean ehFinal() {
+        return false;
+    }
+
+    @Override
+    public boolean deveSerPulado() {
         return true;
     }
 
@@ -15,12 +20,10 @@ public class WhiteSpace implements Estado {
     }
 
     @Override
-    public boolean deveSerPulado() {
-        return true;
-    }
-
-    @Override
     public Estado proximoEstado(char c) {
+        if (Character.isWhitespace(c))
+            return Estados.WhiteSpace;
+
         return null;
     }
 

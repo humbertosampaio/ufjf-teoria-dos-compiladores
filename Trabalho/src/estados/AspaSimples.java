@@ -21,6 +21,10 @@ public class AspaSimples implements Estado {
 
     @Override
     public Estado proximoEstado(char c) {
+
+        if (c == '\\')
+            return Estados.ContraBarra;
+
         if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
             return Estados.CaractereUmaAspaSimples;
         }

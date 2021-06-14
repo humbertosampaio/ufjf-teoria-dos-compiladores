@@ -5,8 +5,8 @@ public final class Estados {
     // Estados finais
     public static Estado Identificador = new Identificador();
     public static Estado Tipo = new Tipo();
-    public static Estado Inteiro = new Inteiro();
-    public static Estado PontoFlutuante = new PontoFlutuante();
+    public static Estado NumeroInteiro = new NumeroInteiro();
+    public static Estado NumeroDecimal = new NumeroDecimal();
     public static Estado Caractere = new Caractere();
     public static Estado AbreChave = new AbreChave();
     public static Estado FechaChave = new FechaChave();
@@ -19,7 +19,6 @@ public final class Estados {
     public static Estado DoisPontos = new DoisPontos();
     public static Estado DoisPontosDuplo = new DoisPontosDuplo();
     public static Estado PontoVirgula = new PontoVirgula();
-    public static Estado Ponto = new Ponto();
     public static Estado Virgula = new Virgula();
     public static Estado Atribuicao = new Atribuicao();
     public static Estado Igualdade = new Igualdade();
@@ -38,6 +37,8 @@ public final class Estados {
     public static Estado AspaSimples = new AspaSimples();
     public static Estado ContraBarra = new ContraBarra();
     public static Estado CaractereUmaAspaSimples = new CaractereUmaAspaSimples();
+    public static Estado PontoFlutuante = new PontoFlutuante();
+    public static Estado PontoAcessoPropriedadeInterna = new PontoAcessoPropriedadeInterna();
 
     // Estados a serem pulados
     public static Estado WhiteSpace = new WhiteSpace();
