@@ -2,7 +2,7 @@ import tokens.TipoToken;
 import tokens.Token;
 
 /**
- * @author Humberto Sampaio
+ * @author Humberto Sampaio - 201635012
  * @author Luís Henrique Simplício
  */
 public class Main {
