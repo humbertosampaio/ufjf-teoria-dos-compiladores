@@ -3,14 +3,14 @@ import tokens.Token;
 
 /**
  * @author Humberto Sampaio - 201635012
- * @author Luís Henrique Simplício
+ * @author Luís Henrique Simplício Ribeiro - 201635037
  */
 public class Main {
 
     public static void main(String[] args) throws Exception {
 
         String nomeArquivoFonte = getNomeArquivoFonte(args);
-        String caminhoArquivoFonte = System.getProperty("user.dir") + "\\input\\" + nomeArquivoFonte;
+        String caminhoArquivoFonte = "../input/" + nomeArquivoFonte;
         LeitorCodigoFonte leitorCodigoFonte = new LeitorCodigoFonte(caminhoArquivoFonte);
         AnalisadorLexico analisadorLexico = new AnalisadorLexico(leitorCodigoFonte);
 

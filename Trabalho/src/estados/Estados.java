@@ -1,5 +1,10 @@
 package estados;
 
+/**
+ * @author Humberto Sampaio - 201635012
+ * @author Luís Henrique Simplício Ribeiro - 201635037
+ */
+
 public final class Estados {
 
     // Estados finais
