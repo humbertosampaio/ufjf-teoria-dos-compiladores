@@ -6,7 +6,7 @@ import tokens.TipoToken;
  * @author Humberto Sampaio - 201635012
  * @author Luís Henrique Simplício Ribeiro - 201635037
  */
-public class ContraBarra implements Estado {
+class ContraBarra implements Estado {
 
     @Override
     public boolean ehFinal() {
