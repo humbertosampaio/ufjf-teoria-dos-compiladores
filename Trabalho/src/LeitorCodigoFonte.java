@@ -24,8 +24,12 @@ public class LeitorCodigoFonte {
     private boolean _fimDoArquivo = false;
     private Posicao _posicao = new Posicao();
 
-    public LeitorCodigoFonte(String caminhoArquivoEntrada) throws FileNotFoundException {
-        _reader = new BufferedReader(new FileReader(new File(caminhoArquivoEntrada)));
+    public LeitorCodigoFonte(String caminhoArquivoEntrada) throws IOException {
+        File arquivo = new File(caminhoArquivoEntrada);
+        if (!arquivo.exists())
+            throw new FileNotFoundException("Arquivo '" + arquivo.getCanonicalPath() + "' não encontrado.");
+
+        _reader = new BufferedReader(new FileReader(arquivo));
     }
 
     public Posicao getPosicao() {

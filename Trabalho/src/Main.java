@@ -7,29 +7,35 @@ import tokens.Token;
  */
 public class Main {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         String nomeArquivoFonte = getNomeArquivoFonte(args);
         String caminhoArquivoFonte = "../input/" + nomeArquivoFonte;
-        LeitorCodigoFonte leitorCodigoFonte = new LeitorCodigoFonte(caminhoArquivoFonte);
-        AnalisadorLexico analisadorLexico = new AnalisadorLexico(leitorCodigoFonte);
 
-        Token token;
-        int tamanhoSecao = 15;
-        char separador = '|';
         try {
-            token = analisadorLexico.proximoToken();
-            if (token.getTipo() != TipoToken.EndOfFile) {
-                System.out.println(String.format("%-" + tamanhoSecao + "s| %-" + tamanhoSecao + "s", "Lexema", "Tipo de Token"));
-                System.out.println("-".repeat(tamanhoSecao) + separador + "-".repeat(tamanhoSecao));
-            }
+            LeitorCodigoFonte leitorCodigoFonte = new LeitorCodigoFonte(caminhoArquivoFonte);
+            AnalisadorLexico analisadorLexico = new AnalisadorLexico(leitorCodigoFonte);
 
-            while (token.getTipo() != TipoToken.EndOfFile) {
-                System.out.println(token.toFormattedString(tamanhoSecao));
+            Token token;
+            int tamanhoSecao = 15;
+            char separador = '|';
+            try {
                 token = analisadorLexico.proximoToken();
+                if (token.getTipo() != TipoToken.EndOfFile) {
+                    System.out.println(String.format("%-" + tamanhoSecao + "s| %-" + tamanhoSecao + "s", "Lexema",
+                            "Tipo de Token"));
+                    System.out.println("-".repeat(tamanhoSecao) + separador + "-".repeat(tamanhoSecao));
+                }
+
+                while (token.getTipo() != TipoToken.EndOfFile) {
+                    System.out.println(token.toFormattedString(tamanhoSecao));
+                    token = analisadorLexico.proximoToken();
+                }
+            } finally {
+                leitorCodigoFonte.close();
             }
-        } finally {
-            leitorCodigoFonte.close();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
     }
 
