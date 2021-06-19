@@ -10,10 +10,6 @@ public class TokenNaoReconhecido extends Token {
 
     private Posicao _posicao;
 
-    public TokenNaoReconhecido() {
-        super(null, TipoToken.NaoReconhecido);
-    }
-
     public TokenNaoReconhecido(Posicao posicao) {
         super(null, TipoToken.NaoReconhecido);
         _posicao = posicao;

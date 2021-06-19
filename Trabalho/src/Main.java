@@ -20,7 +20,7 @@ public class Main {
         try {
             token = analisadorLexico.proximoToken();
             if (token.getTipo() != TipoToken.EndOfFile) {
-                System.out.println(String.format("%-" + tamanhoSecao + "s| %-" + tamanhoSecao + "s", "Token", "Tipo de Token"));
+                System.out.println(String.format("%-" + tamanhoSecao + "s| %-" + tamanhoSecao + "s", "Lexema", "Tipo de Token"));
                 System.out.println("-".repeat(tamanhoSecao) + separador + "-".repeat(tamanhoSecao));
             }
 
