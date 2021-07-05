@@ -2,6 +2,7 @@ package lang.parser;
 
 import java.io.*;
 import lang.ast.SuperNode;
+import lang.ast.Node;
 import lang.parser.*;
 import java.util.List;
 

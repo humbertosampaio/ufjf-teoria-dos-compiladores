@@ -8,7 +8,7 @@ grammar lang;
  * @author Luís Henrique Simplício Ribeiro - 201635037
  */
 
-//Gramática lang
+/* Regras da Gramática da linguagem lang */
 
 //prog -> {data} {func}
 prog: data* func*;
@@ -105,7 +105,7 @@ lvalue: ID //ID
 exps: exp (VIRGULA exp)*;
 
 
-//Tokens
+/* Regras da léxicas da linguagem lang */
 
 //Palavras reservadas
 IF: 'if';
@@ -133,7 +133,6 @@ DIFERENCA: '!=';
 IGUALDADE: '==';
 MAIOR_QUE: '>';
 MENOR_QUE: '<';
-//ECOMERCIAL: '&';
 
 //Separadores
 ASPA_SIMPLES: '\'';
@@ -163,7 +162,6 @@ TIPO_BOOL: 'Bool';
 //Verificar melhor onde ID se refere a nome de variável e onde se refere à nome de tipo
 ID_TIPO_DATA: [A-Z][a-zA-Z0-9_]*;
 ID: [a-zA-Z][a-zA-Z0-9_]*;
-//ID: [a-z][a-zA-Z0-9_]*;
 INT: '0' | '-'?[1-9][0-9]*;
 FLOAT: INT? PONTO [0-9]+;
 CHAR: '\''[\u0000-\u00FF]'\''
