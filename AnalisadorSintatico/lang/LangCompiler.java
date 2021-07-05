@@ -4,6 +4,11 @@ import java.io.*;
 import lang.parser.*;
 import lang.ast.*;
 
+/**
+ * @author Humberto Sampaio - 201635012
+ * @author Luís Henrique Simplício Ribeiro - 201635037
+ */
+
 public class LangCompiler{
    // Recupera o nome base (sem extensão) de um arquivo.
    public static void main(String[] args){
