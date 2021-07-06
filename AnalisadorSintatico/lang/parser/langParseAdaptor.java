@@ -5,10 +5,6 @@ import lang.ast.Node;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 
-import java.io.IOException;
-//import lang.parser.*;
-//import java.util.List;
-
 /**
  * @author Humberto Sampaio - 201635012
  * @author Luís Henrique Simplício Ribeiro - 201635037
@@ -39,9 +35,7 @@ public class langParseAdaptor implements ParseAdaptor  {
            return null;
        }
 
-       //System.out.println(tree.toStringTree(parser));
    }
-        
     catch (Exception e) {
         e.printStackTrace();
     }

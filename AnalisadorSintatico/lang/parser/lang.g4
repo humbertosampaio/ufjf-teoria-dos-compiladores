@@ -3,6 +3,7 @@ grammar lang;
     package lang.parser;
  }
 
+
 /**
  * @author Humberto Sampaio - 201635012
  * @author Luís Henrique Simplício Ribeiro - 201635037
@@ -159,7 +160,7 @@ TIPO_CHAR: 'Char';
 TIPO_FLOAT: 'Float';
 TIPO_BOOL: 'Bool';
 
-//Verificar melhor onde ID se refere a nome de variável e onde se refere à nome de tipo
+//Expressões regulares
 ID_TIPO_DATA: [A-Z][a-zA-Z0-9_]*;
 ID: [a-zA-Z][a-zA-Z0-9_]*;
 INT: '0' | '-'?[1-9][0-9]*;
