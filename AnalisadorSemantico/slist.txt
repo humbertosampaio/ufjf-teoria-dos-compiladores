@@ -5,6 +5,7 @@
 ./lang/parser/LangParseAdaptor.java
 ./lang/parser/LangScanner.java
 ./lang/parser/Terminals.java
+.lang/visitor/TypeCheckVisitor.java
 ./lang/visitor/InterpertVisitor.java
 ./lang/visitor/Environment.java
 ./lang/visitor/PPrint.java
@@ -56,3 +57,13 @@
 ./lang/ast/NodeVisitor.java
 ./lang/util/LinkList.java
 ./lang/util/LinkNode.java
+./lang/semanticanalysis/LocalEnv.java
+./lang/semanticanalysis/TyEnv.java
+./lang/semanticanalysis/STyFun.java
+./lang/semanticanalysis/STyArr.java
+./lang/semanticanalysis/STyBool.java
+./lang/semanticanalysis/STyChar.java
+./lang/semanticanalysis/STyFloat.java
+./lang/semanticanalysis/STyInt.java
+./lang/semanticanalysis/STyErr.java
+./lang/semanticanalysis/SType.java
