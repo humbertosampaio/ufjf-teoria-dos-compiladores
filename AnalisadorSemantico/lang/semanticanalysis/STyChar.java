@@ -1,7 +1,12 @@
+/**
+ * @author Humberto Sampaio - 201635012
+ * @author Luís Henrique Simplício Ribeiro - 201635037
+ */
+
 package lang.semanticanalysis;
 
-public abstract class STyChar extends SType {
-    private static STyChar st = new STyChar();
+public class STyChar extends SType {
+    private static STyChar st = newSTyChar();
 
     private STyChar(){
 

@@ -1,19 +1,24 @@
+/**
+ * @author Humberto Sampaio - 201635012
+ * @author Luís Henrique Simplício Ribeiro - 201635037
+ */
+
 package lang.semanticanalysis;
 
-public abstract class STyFun extends SType {
+public class STyFun extends SType {
     private SType ty[];
 
-    private STyFun(SType t[]){
+    public STyFun(SType t[]){
         ty = t;
     }
 
-    public static STyFun newSTyFun(){
-        return st;
+    public SType[] getTypes(){
+        return ty;
     }
 
     public boolean match(SType v){
         boolean r = false;
-        if (v instanceof StyFun){
+        if (v instanceof STyFun){
             if ( ((STyFun)v).getTypes().length == ty.length){
                 r = true;
                 for (int i = 0; i < ty.length; i++){

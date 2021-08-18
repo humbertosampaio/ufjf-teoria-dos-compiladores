@@ -1,6 +1,12 @@
-package lang.semanticanalysis;
+/**
+ * @author Humberto Sampaio - 201635012
+ * @author Luís Henrique Simplício Ribeiro - 201635037
+ */
 
-public class LocalEnv{
+package lang.semanticanalysis;
+import lang.semanticanalysis.*;
+
+public class LocalEnv<T>{
     private String id;
     private SType st;
 
@@ -9,12 +15,12 @@ public class LocalEnv{
         st = t;
     }
 
-    public getId(){
+    public String getID(){
         return id;
     }
 
-    public getSType(){
-        return t;
+    public SType getFuncType(){
+        return st;
     }
 
     public String toString(){

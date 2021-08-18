@@ -1,6 +1,11 @@
+/**
+ * @author Humberto Sampaio - 201635012
+ * @author Luís Henrique Simplício Ribeiro - 201635037
+ */
+
 package lang.semanticanalysis;
 
-public abstract class STyArr extends SType {
+public class STyArr extends SType {
     private static SType a;
 
     private STyArr(SType t){

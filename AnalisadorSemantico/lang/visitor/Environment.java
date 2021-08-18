@@ -1,3 +1,9 @@
+/**
+ * @author Humberto Sampaio - 201635012
+ * @author Luís Henrique Simplício Ribeiro - 201635037
+ */
+
+
 package lang.visitor;
 
 import java.util.HashSet;
@@ -12,8 +18,6 @@ import java.util.Stack;
  *                    This table is based on a hash table so that access to the values is quick. It supports
  *                    expand and retract operations by means of a stack of Hashtables. All operations, except for
  *                    gobalGet, act only on the table at the top of the stack.                        
- * @author deise
- * @since 01/12/2017 
  */
  // Environment<String, NTType> envy = new Environment();
  //
