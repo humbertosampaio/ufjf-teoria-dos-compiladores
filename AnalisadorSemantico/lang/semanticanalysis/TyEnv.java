@@ -6,9 +6,7 @@
 package lang.semanticanalysis;
 import java.util.HashMap;
 import java.util.ArrayList;
-/*
-Tabela de  símbolos com o id da função, seu tipo, e uma tabela local para cada função
-*/
+
 public class TyEnv<T> {
     private HashMap<String, T> table;
     private ArrayList<T> funcs;
@@ -20,7 +18,5 @@ public class TyEnv<T> {
     public T get(String id){
         return table.get(id);
     }
-
-    //public void appendFunc();
 
 }
