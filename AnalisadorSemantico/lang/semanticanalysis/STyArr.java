@@ -8,7 +8,7 @@ package lang.semanticanalysis;
 public class STyArr extends SType {
     private static SType a;
 
-    private STyArr(SType t){
+    public STyArr(SType t){
         a = t;
     }
 

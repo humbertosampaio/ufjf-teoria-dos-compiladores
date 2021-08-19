@@ -11,6 +11,14 @@ import lang.ast.*;
 import lang.ast.expr.*;
 import lang.ast.cmd.*;
 //import lang.ast.types.*;
+import lang.ast.types.TyArr;
+import lang.ast.types.TyBool;
+import lang.ast.types.TyChar;
+import lang.ast.types.TyFloat;
+import lang.ast.types.TyID;
+import lang.ast.types.TyInt;
+import lang.ast.types.TyVoid;
+
 import lang.ast.decls.*;
 import lang.ast.NodeVisitor;
 import java.util.LinkedList;
@@ -58,6 +66,7 @@ public class TypeCheckVisitor extends NodeVisitor {
     }
 
     public void visit(Program p){
+        /*
         for (Func f : p.getFuncs()){
             STyFun ty;
             //o vetor de tipos tem num_params + 1 pois também
@@ -78,9 +87,11 @@ public class TypeCheckVisitor extends NodeVisitor {
         for (Func f : p.getFuncs()){
             f.accept(this);
         }
+        */
     }
 
     public  void visit(Func d){ 
+        /*
         retChk = false;
         temp = env.get(d.getParams());
         for(Param p : d.getParams()){
@@ -88,6 +99,7 @@ public class TypeCheckVisitor extends NodeVisitor {
             temp.set(p.getID(), stk.pop());
         }
         f.getBody().accept(this);
+        */
     }
     
     public  void visit(TyBind d){ }
@@ -96,7 +108,7 @@ public class TypeCheckVisitor extends NodeVisitor {
     
 
     // Aritmética, lógica e comparações.
-    private void typeArithmeticBinOp(Node n, String opName){
+    private void typeArithmeticBinOp(SuperNode n, String opName){
         SType tyr = stk.pop();
         SType tyl = stk.pop();
 
@@ -105,8 +117,7 @@ public class TypeCheckVisitor extends NodeVisitor {
                 stk.push(tyl);
             }
             else{
-                logError.add(n.getLine() + ", " + n.getColumn() + ": Operador" + opName
-                + "inválido para tipos (" + tyl.toString() + ", " + tyr.toString() + ")");
+                logError.add(n.getLine() + ", " + n.getColumn() + ": Operador" + opName + "inválido para tipos (" + tyl.toString() + ", " + tyr.toString() + ")");
                 stk.push(tyerr);
             }
         }
@@ -116,14 +127,12 @@ public class TypeCheckVisitor extends NodeVisitor {
                 stk.push(tyl);
             }
             else{
-                logError.add(n.getLine() + ", " + n.getColumn() + ": Operador" + opName
-                + "inválido para tipos (" + tyl.toString() + ", " + tyr.toString() + ")");
+                logError.add(n.getLine() + ", " + n.getColumn() + ": Operador" + opName + "inválido para tipos (" + tyl.toString() + ", " + tyr.toString() + ")");
                 stk.push(tyerr);
             }
         }
         else{
-            logError.add(n.getLine() + ", " + n.getColumn() + ": Operador" + opName
-            + "inválido para tipos (" + tyl.toString() + ", " + tyr.toString() + ")");
+            logError.add(n.getLine() + ", " + n.getColumn() + ": Operador" + opName + "inválido para tipos (" + tyl.toString() + ", " + tyr.toString() + ")");
             stk.push(tyerr);
         }
     }
@@ -162,8 +171,7 @@ public class TypeCheckVisitor extends NodeVisitor {
             stk.push(tyint);
         }
         else{
-            logError.add(e.getLine() + ", " + e.getColumn() + ": Operador % inválido para tipos ("
-            + tyl.toString() + ", " + tyr.toString() + ")");
+            //logError.add(e.getLine() + ", " + e.getColumn() + ": Operador % inválido para tipos (" + tyl.toString() + ", " + tyr.toString() + ")");
             stk.push(tyerr);
         }
     }
@@ -177,8 +185,7 @@ public class TypeCheckVisitor extends NodeVisitor {
             stk.push(tybool);
         }
         else{
-            logError.add(e.getLine() + ", " + e.getColumn() + ": Operador and inválido para tipos ("
-            + tyl.toString() + ", " + tyr.toString() + ")");
+            //logError.add(e.getLine() + ", " + e.getColumn() + ": Operador and inválido para tipos (" + tyl.toString() + ", " + tyr.toString() + ")");
             stk.push(tyerr);
         }
     }
@@ -190,8 +197,7 @@ public class TypeCheckVisitor extends NodeVisitor {
             stk.push(tybool);
         }
         else{
-            logError.add(e.getLine() + ", " + e.getColumn() + ": Operador not inválido para tipo "
-            + tyr.toString());
+            //logError.add(e.getLine() + ", " + e.getColumn() + ": Operador not inválido para tipo " + tyr.toString());
             stk.push(tyerr);
         }
 
@@ -233,7 +239,7 @@ public class TypeCheckVisitor extends NodeVisitor {
 
 
     public  void visit(Call e){
-        LocalEnv<SType> le = env.get(e.getName());
+        LocalEnv<SType> le = env.get(e.getCalledName());
         if(le != null){
             STyFun tf = (STyFun)le.getFuncType();
             if(e.getArgs().length == tf.getTypes().length - 1){
@@ -242,8 +248,7 @@ public class TypeCheckVisitor extends NodeVisitor {
                 for(Expr x : e.getArgs()){
                     x.accept(this);
                     if(!tf.getTypes()[k].match(stk.pop())){
-                        logError.add(x.getLine() + ", " + x.getColumn() + ": " + (k+1) +
-                        " argumento incompatível com o parâmetro de " + e.getName());
+                        //logError.add(x.getLine() + ", " + x.getColumn() + ": " + (k+1) + " argumento incompatível com o parâmetro de " + e.getName());
                         stk.push(tyerr);
                     }
                     k++;
@@ -252,15 +257,20 @@ public class TypeCheckVisitor extends NodeVisitor {
             }
 
             else{
-                logError.add(x.getLine() + ", " + x.getColumn() + ": Número incompatível de argumentos e parâmetros na chamada da função " + e.getName());
+                //logError.add(x.getLine() + ", " + x.getColumn() + ": Número incompatível de argumentos e parâmetros na chamada da função " + e.getName());
                 stk.push(tyerr);
             }
 
         }
     }
 
-    public  void visit(Location c);
-    public  void visit(Index idx);
+    public  void visit(Location c){
+
+    }
+
+    public  void visit(Index idx){
+
+    }
 
     //Simplesmente adiciona o tipo na pilha
     public  void visit(NullLit e){ stk.push(tyerr); }
@@ -271,10 +281,10 @@ public class TypeCheckVisitor extends NodeVisitor {
     
     
     public  void visit(Instanciate e){
+        /*
         //verifica se a já foi instanciada (!= null)
         if(temp.get(e.getID().getName()) != null){
-            logError.add(e.getLine() + ", " + e.getColumn() + ": Redefinição da variável"
-            + e.getID());
+            //logError.add(e.getLine() + ", " + e.getColumn() + ": Redefinição da variável" + e.getID());
         }
         else{
             e.getSize().accept(this);
@@ -284,12 +294,15 @@ public class TypeCheckVisitor extends NodeVisitor {
                 temp.set(e.getID().getName(), new STyArr(stk.pop()));
             }
         }
+        */
 
     } 
 
     public  void visit(Var e){
-        SType t = temp.get(e.getName());
+        /*
+        SType t = temp.get(e.getVarName());
         if(t != null){
+
             for (Expr x : e.getIdx()){
                 if(t instanceof STyArr){
                     t = ((STyArr) t).getArg();
@@ -298,21 +311,22 @@ public class TypeCheckVisitor extends NodeVisitor {
                     t = tyerr;
                 }
             }
+            
             if (t == tyerr){
-                logError.add(e.getLine() + ", " + e.getColumn() +
-                ": Atribuição com tipos incompatíveis");
+                //logError.add(e.getLine() + ", " + e.getColumn() + ": Atribuição com tipos incompatíveis");
             }
             stk.push(t);
         }
         else{
-            logError.add(e.getLine() + ", " + e.getColumn() + ": Variável " + e.getName() +
-            " não declarada");
+            //logError.add(e.getLine() + ", " + e.getColumn() + ": Variável " + e.getName() + " não declarada");
             stk.push(tyerr);
         }
+        */
     }
 
     // Comandos
     public  void visit(Attr c){
+        /*
         if(temp.get(c.getID().getName()) == null && (c.getID().getIdx() == null
         || c.getID().getIdx().length == 0) ){
             c.getExpr().accept(this);
@@ -322,53 +336,58 @@ public class TypeCheckVisitor extends NodeVisitor {
             c.getID().accept(this);
             c.getExpr().accept(this);
             if(!stk.pop().match(stk.pop())){
-                logError.add(c.getLine() + ", " + c.getColumn()
-                + ": Atribuição ilegal para variável " + c.getName());
+                //logError.add(c.getLine() + ", " + c.getColumn() + ": Atribuição ilegal para variável " + c.getName());
             }
         }
+        */
     }
-    public  void visit(Iterate c);
+    public  void visit(Iterate c){
+
+    }
     
     public  void visit(While c){
-        c.getTeste().accept(this);
+        c.getCondition().accept(this);
         if(stk.pop().match(tybool)){
             c.getBody().accept(this);
         }
         else{
-            logError.add(c.getLine() + ", " + c.getColumn() + ": Expressão de teste inválida "
-             + c.getName());
+            //logError.add(c.getLine() + ", " + c.getColumn() + ": Expressão de teste inválida " + c.getName());
         }
     }
 
     public  void visit(If c){
         boolean rt, re;
+        rt = true;
         re = false;
-        c.getTeste().accept(this);
+        c.getCondition().accept(this);
         if(stk.pop().match(tybool)){
             retChk = false;
-            c.getThen().accept(this);
+            c.getThenBody().accept(this);
             re = retChk;
-            if(c.getElse() != null){
+            if(c.getElseBody() != null){
                 retChk = false;
-                c.getElse().accept(this);
+                c.getElseBody().accept(this);
                 re = retChk;
             }
             retChk = rt && re;
         }        
         else {
-            logError.add(c.getLine() + ", " + c.getColumn()
-            + " : Expressão de teste inválida no comando if");
+            //logError.add(c.getLine() + ", " + c.getColumn() + " : Expressão de teste inválida no comando if");
         }
     }
 
     public  void visit(Seq c){
+        /*
         if(retMode){ return; }
         c.getLeft().accept(this);
         if(retMode){ return; }
         c.getRight().accept(this);
+        */
     }
     
-    public  void visit(CallCmd c);
+    public  void visit(CallCmd c){
+
+    }
     
     public  void visit(Print c){
         c.getExpr().accept(this);
@@ -378,6 +397,7 @@ public class TypeCheckVisitor extends NodeVisitor {
     }
     
     public  void visit(Return c){
+        /*
         c.getExpr().accept(this);
         if(temp.getFuncType() instanceof SType){
             SType[] t = ((SType)temp.getFuncType()).getTypes();
@@ -387,17 +407,17 @@ public class TypeCheckVisitor extends NodeVisitor {
             stk.pop().match(temp.getFuncType());
         }
         retChk = true;
+        */
     }
 
-
-    //Não é preciso fazer nada
-    //public  void visit(STyVoid ty){ }
-    public  void visit(STyInt ty){ }
-    public  void visit(STyFloat ty){ }
-    public  void visit(STyChar ty){ }
-    public  void visit(STyBool ty){ }
-    //public  void visit(STyID ty){ }
-    //public  void visit(STyArr ty){ }
+    public  void visit(TyVoid ty){ }
+    public  void visit(TyInt ty){ }
+    public  void visit(TyFloat ty){ }
+    public  void visit(TyChar ty){ }
+    public  void visit(TyBool ty){ }
+    public  void visit(TyID ty){ }
+    public  void visit(TyArr ty){ }
+    
 
 
 }
