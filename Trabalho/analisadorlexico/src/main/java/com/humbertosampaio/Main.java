@@ -1,5 +1,7 @@
 package com.humbertosampaio;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import com.humbertosampaio.io.*;
 import com.humbertosampaio.tokens.*;
 
@@ -13,29 +15,37 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            CodigoFonte codigoFonte = new CodigoFonte(args);
-            LeitorCodigoFonte leitorCodigoFonte = new LeitorCodigoFonte(codigoFonte);
-            AnalisadorLexico analisadorLexico = new AnalisadorLexico(leitorCodigoFonte);
-
-            Token token;
-            try {
-                token = analisadorLexico.proximoToken();
-
-                Output output = new Output(tamanhoSecao, separador);
-                if (token.getTipo() != TipoToken.EndOfFile) {
-                    System.out.println(output.getCabecalho());
-                    System.out.println(output.getSeparador());
-                }
-
-                while (token.getTipo() != TipoToken.EndOfFile) {
-                    System.out.println(output.format(token));
-                    token = analisadorLexico.proximoToken();
-                }
-            } finally {
-                leitorCodigoFonte.close();
-            }
+            ArrayList<Token> tokens = getTokens(args);
+            printOutput(tokens);
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
+    }
+
+    private static ArrayList<Token> getTokens(String[] args) throws IOException {
+        CodigoFonte codigoFonte = new CodigoFonte(args);
+        LeitorCodigoFonte leitorCodigoFonte = new LeitorCodigoFonte(codigoFonte);
+        AnalisadorLexico analisadorLexico = new AnalisadorLexico(leitorCodigoFonte);
+
+        ArrayList<Token> tokens = new ArrayList<Token>();
+        try {
+            Token token;
+            do {
+                token = analisadorLexico.proximoToken();
+                tokens.add(token);
+            } while (token.getTipo() != TipoToken.EndOfFile);
+        } finally {
+            leitorCodigoFonte.close();
+        }
+        return tokens;
+    }
+
+    private static void printOutput(ArrayList<Token> tokens) {
+        Output output = new Output(tamanhoSecao, separador);
+        System.out.println(output.getCabecalho());
+        System.out.println(output.getSeparador());
+
+        for (Token token : tokens)
+            System.out.println(output.format(token));
     }
 }
